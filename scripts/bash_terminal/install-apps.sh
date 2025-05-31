@@ -32,15 +32,6 @@ info() {
     echo -e "${BLUE}[STEP]${NC} $1"
 }
 
-# Verify we're in the right environment
-if [[ "$TERM_PROGRAM" != "iTerm.app" ]]; then
-    warn "This script is designed for iTerm2. Current terminal: $TERM_PROGRAM"
-fi
-
-if [[ "$SHELL" != */zsh ]]; then
-    error "This script requires zsh. Current shell: $SHELL"
-    exit 1
-fi
 
 # Ensure Homebrew is available
 if ! command -v brew &> /dev/null; then
