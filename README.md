@@ -4,7 +4,7 @@
 
 ### **Fresh Mac Setup**
 
-If you're on a completely fresh Mac, download this repository first:
+If you're on a completely fresh Mac, download this repository first to your Downloads:
 
 - https://github.com/chrismlittle123/factory-reset
 
@@ -45,9 +45,10 @@ run_zsh.sh
 
 ## Manual Steps After Installation
 
+- Log into 1Password
+- Set up GitHub SSH keys: `./scripts/zsh_terminal/setup-github.sh`
 - Install Cursor extensions: Python, TypeScript, Rainbow CSV
 - Configure AWS CLI: `aws configure`
-- Set up GitHub SSH keys: `./scripts/zsh_terminal/setup-github.sh`
 - Add Google Calendars to Apple Calendars
 - Import Chrome bookmarks from `files/bookmarks.html`
 - Install Numbers from Mac App Store
