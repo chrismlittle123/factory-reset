@@ -135,11 +135,6 @@ EOF
     fi
 fi
 
-info "Step 14: Installing development tools..."
-# Install some useful development tools
-brew install --cask visual-studio-code
-brew install tree
-
 echo ""
 echo "🎉 Application installation complete!"
 echo ""
