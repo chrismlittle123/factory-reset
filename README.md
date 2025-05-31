@@ -52,10 +52,10 @@ run_zsh.sh
 - Set up iCloud for Desktop
 - Install Numbers from App Store
 - Add Google Calendars to Apple Calendars
+- Configure AWS CLI: `aws configure`
 
 # ZSH 2
 
-- Configure AWS CLI: `aws configure`
-- Import Chrome bookmarks from `files/bookmarks.html`
-- Install Cursor extensions: Python, TypeScript, Rainbow CSV
+- Imports Chrome bookmarks from `files/bookmarks.html`
+- Installs Cursor extensions: Python, TypeScript, Rainbow CSV
 

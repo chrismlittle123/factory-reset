@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to Chrome bookmarks file
-BOOKMARKS_FILE="../files/bookmarks.html"
+BOOKMARKS_FILE="../../files/bookmarks.html"
 CHROME_DIR="$HOME/Library/Application Support/Google/Chrome/Default"
 
 # Check if bookmarks file exists
