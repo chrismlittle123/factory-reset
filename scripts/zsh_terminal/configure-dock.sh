@@ -51,7 +51,6 @@ dock_apps=(
     "/Applications/Docker.app"
     "/Applications/1Password.app"
     "/Applications/TablePlus.app"
-    "/Applications/Numbers.app"
     "/Applications/NordVPN.app"
 )
 

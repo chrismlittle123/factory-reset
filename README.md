@@ -30,16 +30,17 @@ run_zsh.sh
 - Installs iTerm2 (for later use)
 - Installs and configures oh-my-zsh
 
-**Phase 2: Applications & Development Tools**
+**Phase 2: Setup Github**
+- Sets up github SSH key
+
+**Phase 3: Applications & Development Tools**
 - Google Chrome, 1Password, Cursor, Sublime Text
 - Python (via pyenv), Node.js, Docker, AWS CLI
 - TablePlus, NordVPN, VS Code
 - Development tools: jq, tree, wget, curl
 
-**Phase 3: System Configuration**
-- Runs scripts to configure Dock and set scroll direction
-
-
+**Phase 4: System Configuration**
+- Runs script to configure Dock
 
 ## Manual Steps After Installation
 
@@ -51,25 +52,4 @@ run_zsh.sh
 - Add Google Calendars to Apple Calendars
 - Import Chrome bookmarks from `files/bookmarks.html`
 - Install Numbers from Mac App Store
-
-- Remove all apps from Dock bar except for:
-
-------------------------------------------------------------------------------------
-- Finder
-- System Settings
-- Google Chrome
-- Cursor
-- iTerm
-- Sublime Text
-- Docker
-- 1Password
-- TablePlus
-- Numbers
-- NordVPN
-
-## Cursor Extensions
-
-- Python
-- Typescript
-- Rainbow CSV
-
+- Reverse scroll direction and update background
