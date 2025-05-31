@@ -46,6 +46,7 @@ run_zsh.sh
 ## Manual Steps After Installation
 
 - Log into 1Password
+- Set up iCloud for Desktop
 - Set up GitHub SSH keys: `./scripts/zsh_terminal/setup-github.sh`
 - Install Cursor extensions: Python, TypeScript, Rainbow CSV
 - Configure AWS CLI: `aws configure`
