@@ -41,6 +41,8 @@ run_zsh.sh
 
 **Phase 4: System Configuration**
 - Runs script to configure Dock
+- Runs script to configure scroll
+- Runs script to import Bookmarks to Chrome
 
 ## Manual Steps After Installation
 
@@ -50,9 +52,10 @@ run_zsh.sh
 - Set up GitHub SSH keys: `./scripts/zsh_terminal/setup-github.sh`
 - Set up iCloud for Desktop
 - Install Numbers from App Store
-- Install Cursor extensions: Python, TypeScript, Rainbow CSV
-- Configure AWS CLI: `aws configure`
 - Add Google Calendars to Apple Calendars
+
+
+- Configure AWS CLI: `aws configure`
 - Import Chrome bookmarks from `files/bookmarks.html`
-- Install Numbers from Mac App Store
-- Reverse scroll direction and update background
+- Install Cursor extensions: Python, TypeScript, Rainbow CSV
+
