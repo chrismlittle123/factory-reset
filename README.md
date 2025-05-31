@@ -2,29 +2,23 @@
 
 ## Getting Started
 
-### **Simple One-Command Setup**
-
-If you already have this repository:
-
-```bash
-./run.sh
-```
-
 ### **Fresh Mac Setup**
 
 If you're on a completely fresh Mac, download this repository first:
 
-```bash
-# Download and extract
-curl -L -o factory-reset.zip "https://github.com/yourusername/factory-reset/archive/refs/heads/main.zip"
-unzip factory-reset.zip
-cd factory-reset-main
+- https://github.com/chrismlittle123/factory-reset
 
-# Run the setup
-./run.sh
+In MacOS terminal run:
+
+```bash
+run_bash.sh
 ```
 
-That's it! The script handles everything in one continuous process.
+Then in iTerm run:
+
+```bash
+run_zsh.sh
+```
 
 ---
 
@@ -53,15 +47,16 @@ That's it! The script handles everything in one continuous process.
 
 - Install Cursor extensions: Python, TypeScript, Rainbow CSV
 - Configure AWS CLI: `aws configure`
-- Set up GitHub SSH keys: `./scripts/bash_terminal/setup-github.sh`
+- Set up GitHub SSH keys: `./scripts/zsh_terminal/setup-github.sh`
 - Add Google Calendars to Apple Calendars
-- Import Chrome bookmarks from `files/bookmarks.json`
+- Import Chrome bookmarks from `files/bookmarks.html`
 - Install Numbers from Mac App Store
+- Change scroll direction
 
----
+- Remove all apps from Dock bar except for:
 
-## Programs Installed
-
+------------------------------------------------------------------------------------
+- Finder
 - Google Chrome
 - Cursor
 - iTerm
@@ -69,7 +64,7 @@ That's it! The script handles everything in one continuous process.
 - Docker
 - 1Password
 - TablePlus
-- Numbers (manual install)
+- Numbers
 - NordVPN
 
 ## Cursor Extensions
