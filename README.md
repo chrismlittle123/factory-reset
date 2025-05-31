@@ -45,9 +45,11 @@ run_zsh.sh
 ## Manual Steps After Installation
 
 - Log into 1Password
+- Log into Gmail and Github in Chrome
+- Add 1Password Google Chrome Extension
+- Set up GitHub SSH keys: `./scripts/zsh_terminal/setup-github.sh`
 - Set up iCloud for Desktop
 - Install Numbers from App Store
-- Set up GitHub SSH keys: `./scripts/zsh_terminal/setup-github.sh`
 - Install Cursor extensions: Python, TypeScript, Rainbow CSV
 - Configure AWS CLI: `aws configure`
 - Add Google Calendars to Apple Calendars
