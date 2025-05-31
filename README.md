@@ -37,11 +37,9 @@ run_zsh.sh
 - Development tools: jq, tree, wget, curl
 
 **Phase 3: System Configuration**
-- Creates ~/Development, ~/GitHub, ~/Screenshots folders
-- Configures screenshots to save in ~/Screenshots
-- Optimizes Finder and Dock settings
-- Adds useful command-line aliases
-- Creates desktop shortcuts
+- Runs scripts to configure Dock and set scroll direction
+
+
 
 ## Manual Steps After Installation
 
@@ -53,12 +51,12 @@ run_zsh.sh
 - Add Google Calendars to Apple Calendars
 - Import Chrome bookmarks from `files/bookmarks.html`
 - Install Numbers from Mac App Store
-- Change scroll direction
 
 - Remove all apps from Dock bar except for:
 
 ------------------------------------------------------------------------------------
 - Finder
+- System Settings
 - Google Chrome
 - Cursor
 - iTerm
