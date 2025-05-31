@@ -53,9 +53,9 @@ run_zsh.sh
 - Install Numbers from App Store
 - Add Google Calendars to Apple Calendars
 - Configure AWS CLI: `aws configure`
+- Imports Chrome bookmarks from `files/bookmarks.html`
 
 # ZSH 2
 
-- Imports Chrome bookmarks from `files/bookmarks.html`
 - Installs Cursor extensions: Python, TypeScript, Rainbow CSV
 
