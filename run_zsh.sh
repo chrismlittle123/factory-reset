@@ -9,6 +9,6 @@ echo "Installing applications..."
 
 # Run system configuration
 echo "Configuring system settings..."
-./scripts/zsh_terminal/setup-system.sh
+./scripts/zsh_terminal/configure-dock.sh
 
 echo "All scripts completed successfully!" 

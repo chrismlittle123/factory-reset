@@ -30,7 +30,7 @@ run_zsh.sh
 - Installs iTerm2 (for later use)
 - Installs and configures oh-my-zsh
 
-**Phase 2: Setup Github**
+**Phase 2: Setup Github (Run separately)** 
 - Sets up github SSH key
 
 **Phase 3: Applications & Development Tools**
