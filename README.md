@@ -40,18 +40,17 @@ run_zsh.sh
 
 **Phase 3: System Configuration**
 - Runs script to configure Dock
-- Runs script to configure scroll
 - Runs script to import Bookmarks to Chrome
 
 ## Manual Steps After Installation
 
 - Log into 1Password
 - Log into Gmail and Github in Chrome
+- Reverse scroll direction
 - Add 1Password Google Chrome Extension
 - Set up GitHub SSH keys: `./scripts/zsh_terminal/setup-github.sh`
 - Set up iCloud for Desktop
 - Install Numbers from App Store
-- Add Google Calendars to Apple Calendars
 - Configure AWS CLI: `aws configure`
 - Imports Chrome bookmarks from `files/bookmarks.html`
 
