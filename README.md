@@ -30,16 +30,15 @@ run_zsh.sh
 - Installs iTerm2 (for later use)
 - Installs and configures oh-my-zsh
 
-**Phase 2: Setup Github (Run separately)** 
-- Sets up github SSH key
+# ZSH 1
 
-**Phase 3: Applications & Development Tools**
+**Phase 2: Applications & Development Tools**
 - Google Chrome, 1Password, Cursor, Sublime Text
 - Python (via pyenv), Node.js, Docker, AWS CLI
 - TablePlus, NordVPN, VS Code
 - Development tools: jq, tree, wget, curl
 
-**Phase 4: System Configuration**
+**Phase 3: System Configuration**
 - Runs script to configure Dock
 - Runs script to configure scroll
 - Runs script to import Bookmarks to Chrome
@@ -54,6 +53,7 @@ run_zsh.sh
 - Install Numbers from App Store
 - Add Google Calendars to Apple Calendars
 
+# ZSH 2
 
 - Configure AWS CLI: `aws configure`
 - Import Chrome bookmarks from `files/bookmarks.html`
