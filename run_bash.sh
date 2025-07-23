@@ -44,9 +44,9 @@ info "Phase 1: Installing Foundation Tools"
 echo "Installing Homebrew, git, iTerm2, oh-my-zsh"
 echo ""
 
-if [ -f "./scripts/bash_terminal/install-foundation.sh" ]; then
-    chmod +x ./scripts/bash_terminal/install-foundation.sh
-    ./scripts/bash_terminal/install-foundation.sh
+if [ -f "./scripts/bash/install-foundation.sh" ]; then
+    chmod +x ./scripts/bash/install-foundation.sh
+    ./scripts/bash/install-foundation.sh
     if [ $? -ne 0 ]; then
         error "Foundation installation failed. Exiting."
         exit 1

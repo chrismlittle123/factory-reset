@@ -35,7 +35,7 @@ info() {
 
 # Ensure Homebrew is available
 if ! command -v brew &> /dev/null; then
-    error "Homebrew not found. Please run ./scripts/bash_terminal/install-foundation.sh first"
+    error "Homebrew not found. Please run ./scripts/bash/install-foundation.sh first"
     exit 1
 fi
 
@@ -66,8 +66,13 @@ brew install --cask tableplus
 info "Step 10: Installing NordVPN..."
 brew install --cask nordvpn
 
+info "Step 11: Installing Slack..."
+brew install --cask slack
 
-info "Step 11: Installing additional zsh plugins..."
+info "Step 12: Installing Notion..."
+brew install --cask notion
+
+info "Step 13: Installing additional zsh plugins..."
 # Install useful zsh plugins if they don't exist
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
@@ -81,7 +86,7 @@ if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 fi
 
-info "Step 12: Updating .zshrc with plugins..."
+info "Step 14: Updating .zshrc with plugins..."
 # Add plugins to .zshrc if not already there
 if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
     log "Adding plugins to .zshrc..."
@@ -110,16 +115,3 @@ EOF
         log "Added plugins to .zshrc"
     fi
 fi
-
-echo ""
-echo "🎉 Application installation complete!"
-echo ""
-warn "Manual steps still required:"
-log "1. Install Cursor extensions (Python, TypeScript, Rainbow CSV)"
-log "2. Configure AWS CLI: aws configure"
-log "3. Set up GitHub SSH keys: ./scripts/zsh_terminal/setup-github.sh"
-log "4. Set up folders and Finder: ./scripts/zsh_terminal/setup-folders.sh"
-log "5. Add Google Calendars to Apple Calendars"
-log "6. Import Chrome bookmarks from files/bookmarks.json"
-echo ""
-info "Restart your terminal or run 'source ~/.zshrc' to reload configuration" 
