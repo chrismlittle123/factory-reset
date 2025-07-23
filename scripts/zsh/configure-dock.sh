@@ -48,6 +48,8 @@ dock_apps=(
     "/Applications/Cursor.app"
     "/Applications/iTerm.app"
     "/Applications/Sublime Text.app"
+    "/Applications/Slack.app"
+    "/Applications/Notion.app"
     "/Applications/Docker.app"
     "/Applications/1Password.app"
     "/Applications/TablePlus.app"

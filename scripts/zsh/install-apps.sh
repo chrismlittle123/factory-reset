@@ -45,29 +45,6 @@ brew install --cask google-chrome
 info "Step 2: Installing 1Password..."
 brew install --cask 1password
 
-info "Step 3: Installing Python via pyenv..."
-if ! command -v pyenv &> /dev/null; then
-    brew install pyenv
-    log "Pyenv installed"
-else
-    log "Pyenv already available"
-fi
-
-# Reload zsh configuration to get pyenv in PATH
-source ~/.zshrc 2>/dev/null || true
-
-# Install latest Python
-if command -v pyenv &> /dev/null; then
-    log "Installing latest Python version..."
-    PYTHON_VERSION=$(pyenv install --list | grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+$' | tail -1 | tr -d ' ')
-    log "Installing Python $PYTHON_VERSION..."
-    pyenv install $PYTHON_VERSION || log "Python $PYTHON_VERSION already installed"
-    pyenv global $PYTHON_VERSION
-    log "Set Python $PYTHON_VERSION as global version"
-else
-    warn "Pyenv not available in PATH after installation"
-fi
-
 info "Step 4: Installing Node.js..."
 brew install node
 
@@ -85,7 +62,6 @@ brew install --cask sublime-text
 
 info "Step 9: Installing TablePlus..."
 brew install --cask tableplus
-
 
 info "Step 10: Installing NordVPN..."
 brew install --cask nordvpn

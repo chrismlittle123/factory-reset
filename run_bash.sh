@@ -41,7 +41,7 @@ fi
 # ============================================================================
 
 info "Phase 1: Installing Foundation Tools"
-echo "Installing Homebrew, git, iTerm2, oh-my-zsh, and pyenv..."
+echo "Installing Homebrew, git, iTerm2, oh-my-zsh"
 echo ""
 
 if [ -f "./scripts/bash_terminal/install-foundation.sh" ]; then
