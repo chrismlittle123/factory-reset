@@ -41,4 +41,7 @@ fi
 info "Step 1: Installing Claude Code CLI..."
 npm install -g @anthropic-ai/claude-code
 
+info "Step 2: Installing UV..."
+brew install uv
+
 log "Development tools installation completed!"
