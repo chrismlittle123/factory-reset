@@ -42,7 +42,6 @@ After the foundation setup completes, switch to iTerm2 and run:
 - Sublime Text
 - Docker
 - TablePlus (database client)
-- NordVPN
 - Slack
 - Notion
 

@@ -63,16 +63,13 @@ brew install --cask sublime-text
 info "Step 9: Installing TablePlus..."
 brew install --cask tableplus
 
-info "Step 10: Installing NordVPN..."
-brew install --cask nordvpn
-
-info "Step 11: Installing Slack..."
+info "Step 10: Installing Slack..."
 brew install --cask slack
 
-info "Step 12: Installing Notion..."
+info "Step 11: Installing Notion..."
 brew install --cask notion
 
-info "Step 13: Installing additional zsh plugins..."
+info "Step 12: Installing additional zsh plugins..."
 # Install useful zsh plugins if they don't exist
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
