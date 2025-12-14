@@ -38,10 +38,9 @@ After the foundation setup completes, switch to iTerm2 and run:
 **Applications:**
 - Google Chrome
 - 1Password (password manager)
-- Cursor (AI-powered editor)
+- VS Code (code editor)
 - Sublime Text
 - Docker
-- TablePlus (database client)
 - Slack
 - Notion
 
@@ -93,7 +92,7 @@ factory-reset/
 ### Optional Steps:
 - Set up iCloud for Desktop sync
 - Install Numbers from App Store
-- Install Cursor extensions: Python, TypeScript, Rainbow CSV
+- Install VS Code extensions: Python, TypeScript, Rainbow CSV
 - Add Google Calendars to Apple Calendar
 
 ## Notes
