@@ -44,4 +44,7 @@ npm install -g @anthropic-ai/claude-code
 info "Step 2: Installing UV..."
 brew install uv
 
+info "Step 3: Installing GitHub CLI..."
+brew install gh
+
 log "Development tools installation completed!"

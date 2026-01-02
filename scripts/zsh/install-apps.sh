@@ -55,7 +55,7 @@ info "Step 5: Installing AWS CLI..."
 brew install awscli
 
 info "Step 6: Installing VS Code..."
-brew install --cask code
+brew install --cask visual-studio-code
 
 info "Step 7: Installing Sublime Text..."
 brew install --cask sublime-text
