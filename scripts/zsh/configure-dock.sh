@@ -52,7 +52,6 @@ dock_apps=(
     "/Applications/Docker.app"
     "/Applications/Visual Studio Code.app"
     "/Applications/1Password.app"
-    "/Applications/TablePlus.app"
 )
 
 # Add each app if it exists
