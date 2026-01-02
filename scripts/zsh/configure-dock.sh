@@ -45,12 +45,12 @@ dockutil --remove all --no-restart
 dock_apps=(
     "/System/Applications/System Settings.app"
     "/Applications/Google Chrome.app"
-    "/Applications/Visual Studio Code.app"
     "/Applications/iTerm.app"
     "/Applications/Sublime Text.app"
     "/Applications/Slack.app"
     "/Applications/Notion.app"
     "/Applications/Docker.app"
+    "/Applications/Visual Studio Code.app"
     "/Applications/1Password.app"
     "/Applications/TablePlus.app"
 )
