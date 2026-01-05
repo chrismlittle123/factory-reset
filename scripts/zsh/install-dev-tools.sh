@@ -41,10 +41,13 @@ fi
 info "Step 1: Installing Claude Code CLI..."
 npm install -g @anthropic-ai/claude-code
 
-info "Step 2: Installing UV..."
+info "Step 2: Installing Python 3.13..."
+brew install python@3.13
+
+info "Step 3: Installing UV..."
 brew install uv
 
-info "Step 3: Installing GitHub CLI..."
+info "Step 4: Installing GitHub CLI..."
 brew install gh
 
 log "Development tools installation completed!"
