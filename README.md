@@ -42,7 +42,6 @@ After the foundation setup completes, switch to iTerm2 and run:
 - Sublime Text
 - Docker
 - Slack
-- Notion
 
 **Development Tools:**
 - Node.js
