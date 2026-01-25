@@ -43,14 +43,13 @@ dockutil --remove all --no-restart
 
 # List of apps to add (in order)
 dock_apps=(
-    "/System/Applications/System Settings.app"
     "/Applications/Google Chrome.app"
     "/Applications/iTerm.app"
     "/Applications/Sublime Text.app"
     "/Applications/Slack.app"
-    "/Applications/Docker.app"
     "/Applications/Visual Studio Code.app"
     "/Applications/1Password.app"
+    "/Applications/Claude.app"
 )
 
 # Add each app if it exists

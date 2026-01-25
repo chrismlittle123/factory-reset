@@ -45,25 +45,30 @@ brew install --cask google-chrome
 info "Step 2: Installing 1Password..."
 brew install --cask 1password
 
-info "Step 3: Installing Node.js..."
+info "Step 3: Installing Claude..."
+brew install --cask claude
+
+info "Step 4: Installing Node.js..."
 brew install node
 
-info "Step 4: Installing Docker..."
-brew install --cask docker
+info "Step 5: Installing Docker (via Colima)..."
+brew install colima docker docker-compose
+log "Starting Colima VM..."
+colima start
 
-info "Step 5: Installing AWS CLI..."
+info "Step 6: Installing AWS CLI..."
 brew install awscli
 
-info "Step 6: Installing VS Code..."
+info "Step 7: Installing VS Code..."
 brew install --cask visual-studio-code
 
-info "Step 7: Installing Sublime Text..."
+info "Step 8: Installing Sublime Text..."
 brew install --cask sublime-text
 
-info "Step 8: Installing Slack..."
+info "Step 9: Installing Slack..."
 brew install --cask slack
 
-info "Step 9: Installing additional zsh plugins..."
+info "Step 10: Installing additional zsh plugins..."
 # Install useful zsh plugins if they don't exist
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
@@ -77,7 +82,7 @@ if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 fi
 
-info "Step 10: Updating .zshrc with plugins..."
+info "Step 11: Updating .zshrc with plugins..."
 # Add plugins to .zshrc if not already there
 if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
     log "Adding plugins to .zshrc..."
@@ -112,9 +117,13 @@ log "Application installation complete!"
 echo ""
 echo "Next steps:"
 echo "  1. Restart your terminal or run: source ~/.zshrc"
-echo "  2. Open Docker Desktop and complete setup"
-echo "  3. Configure AWS CLI with: aws configure"
-echo "  4. Sign into 1Password, Chrome, and Slack"
-echo "  5. Enable dark mode in cloud consoles:"
+echo "  2. Configure AWS CLI with: aws configure"
+echo "  3. Sign into 1Password, Chrome, and Slack"
+echo "  4. Enable dark mode in cloud consoles:"
 echo "     - AWS: Click gear icon (⚙) → Visual mode → Dark"
 echo "     - GCP: Settings → Preferences → Appearance → Dark"
+echo ""
+echo "Docker (Colima) commands:"
+echo "  colima start    # Start Docker VM"
+echo "  colima stop     # Stop Docker VM"
+echo "  docker ps       # Works as normal"
