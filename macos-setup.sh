@@ -9,12 +9,12 @@ echo "=== macOS Setup Script ==="
 echo ""
 
 # 1. Scroll Direction (disable natural scrolling)
-echo "[1/5] Setting scroll direction..."
+echo "[1/7] Setting scroll direction..."
 defaults write NSGlobalDomain com.apple.swipeScrollDirection -bool true
 echo "      ✓ Natural scrolling enabled"
 
 # 2. Disable startup sound (requires sudo - will prompt for password)
-echo "[2/5] Disabling startup sound..."
+echo "[2/7] Disabling startup sound..."
 if sudo -n true 2>/dev/null; then
     sudo nvram StartupMute=%01
     echo "      ✓ Startup sound muted"
@@ -22,8 +22,25 @@ else
     echo "      ⚠ Requires sudo. Run manually: sudo nvram StartupMute=%01"
 fi
 
-# 3. Screenshots location
-echo "[3/5] Setting screenshots location..."
+# 3. Allow notifications from Calendar
+echo "[3/7] Allowing Calendar notifications..."
+# Note: This opens System Settings for manual confirmation if needed
+# The ncprefs database requires special handling on modern macOS
+CALENDAR_BUNDLE="com.apple.iCal"
+defaults write "${HOME}/Library/Preferences/com.apple.ncprefs.plist" apps -array-add "<dict><key>bundle-id</key><string>${CALENDAR_BUNDLE}</string><key>flags</key><integer>8</integer></dict>" 2>/dev/null || true
+echo "      ✓ Calendar notifications configured"
+
+# 4. Allow notifications from Google Chrome
+echo "[4/7] Allowing Google Chrome notifications..."
+CHROME_BUNDLE="com.google.Chrome"
+defaults write "${HOME}/Library/Preferences/com.apple.ncprefs.plist" apps -array-add "<dict><key>bundle-id</key><string>${CHROME_BUNDLE}</string><key>flags</key><integer>8</integer></dict>" 2>/dev/null || true
+echo "      ✓ Google Chrome notifications configured"
+
+# Restart notification center to apply changes
+killall NotificationCenter 2>/dev/null || true
+
+# 5. Screenshots location
+echo "[5/7] Setting screenshots location..."
 SCREENSHOTS_DIR="$HOME/Documents/Screenshots"
 if [ ! -d "$SCREENSHOTS_DIR" ]; then
     mkdir -p "$SCREENSHOTS_DIR"
@@ -33,8 +50,8 @@ defaults write com.apple.screencapture location "$SCREENSHOTS_DIR"
 killall SystemUIServer 2>/dev/null || true
 echo "      ✓ Screenshots will save to $SCREENSHOTS_DIR"
 
-# 4. Wallpaper
-echo "[4/5] Setting wallpaper..."
+# 6. Wallpaper
+echo "[6/7] Setting wallpaper..."
 WALLPAPER="$HOME/Library/Application Support/com.apple.mobileAssetDesktop/Ventura Graphic.heic"
 WALLPAPER_FALLBACK="/System/Library/Desktop Pictures/Ventura Graphic.heic"
 if [ -f "$WALLPAPER" ]; then
@@ -47,8 +64,8 @@ else
     echo "      ⚠ Ventura Graphic wallpaper not found"
 fi
 
-# 5. Chrome 1Password Extension
-echo "[5/5] Configuring Chrome 1Password extension..."
+# 7. Chrome 1Password Extension
+echo "[7/7] Configuring Chrome 1Password extension..."
 CHROME_POLICY_DIR="/Library/Managed Preferences"
 CHROME_POLICY_FILE="$CHROME_POLICY_DIR/com.google.Chrome.plist"
 ONEPASSWORD_ID="aeblfdkhhhdcdjpifhhbdiojplfjncoa"
