@@ -39,7 +39,7 @@ if ! command -v node &> /dev/null; then
 fi
 
 info "Step 1: Installing Claude Code CLI..."
-npm install -g @anthropic-ai/claude-code
+brew install --cask claude-code
 
 info "Step 2: Installing Python 3.13..."
 brew install python@3.13

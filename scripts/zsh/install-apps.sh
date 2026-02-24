@@ -59,16 +59,19 @@ colima start
 info "Step 6: Installing AWS CLI..."
 brew install awscli
 
-info "Step 7: Installing VS Code..."
+info "Step 7: Installing Google Cloud CLI..."
+brew install --cask google-cloud-sdk
+
+info "Step 8: Installing VS Code..."
 brew install --cask visual-studio-code
 
-info "Step 8: Installing Sublime Text..."
+info "Step 9: Installing Sublime Text..."
 brew install --cask sublime-text
 
-info "Step 9: Installing Slack..."
+info "Step 10: Installing Slack..."
 brew install --cask slack
 
-info "Step 10: Installing additional zsh plugins..."
+info "Step 11: Installing additional zsh plugins..."
 # Install useful zsh plugins if they don't exist
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
@@ -82,7 +85,7 @@ if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 fi
 
-info "Step 11: Updating .zshrc with plugins..."
+info "Step 12: Updating .zshrc with plugins..."
 # Add plugins to .zshrc if not already there
 if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
     log "Adding plugins to .zshrc..."
@@ -99,6 +102,7 @@ plugins=(
     python
     docker
     aws
+    gcloud
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -118,8 +122,9 @@ echo ""
 echo "Next steps:"
 echo "  1. Restart your terminal or run: source ~/.zshrc"
 echo "  2. Configure AWS CLI with: aws configure"
-echo "  3. Sign into 1Password, Chrome, and Slack"
-echo "  4. Enable dark mode in cloud consoles:"
+echo "  3. Configure GCloud CLI with: gcloud init"
+echo "  4. Sign into 1Password, Chrome, and Slack"
+echo "  5. Enable dark mode in cloud consoles:"
 echo "     - AWS: Click gear icon (⚙) → Visual mode → Dark"
 echo "     - GCP: Settings → Preferences → Appearance → Dark"
 echo ""
