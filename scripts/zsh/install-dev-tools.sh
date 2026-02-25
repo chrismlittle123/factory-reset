@@ -50,4 +50,7 @@ brew install uv
 info "Step 4: Installing GitHub CLI..."
 brew install gh
 
+info "Step 5: Installing fzf (fuzzy finder)..."
+brew install fzf
+
 log "Development tools installation completed!"
