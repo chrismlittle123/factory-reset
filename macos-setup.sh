@@ -29,10 +29,10 @@ skip() {
 
 # 1. Scroll Direction (enable natural scrolling)
 echo "[1/7] Setting scroll direction..."
-defaults write NSGlobalDomain com.apple.swipeScrollDirection -bool true
+defaults write NSGlobalDomain com.apple.swipeScrollDirection -bool false
 ACTUAL=$(defaults read NSGlobalDomain com.apple.swipeScrollDirection 2>/dev/null)
-if [ "$ACTUAL" = "1" ]; then
-    pass "Natural scrolling enabled"
+if [ "$ACTUAL" = "0" ]; then
+    pass "Traditional (mouse-style) scrolling enabled"
 else
     fail "Natural scrolling not set (got: $ACTUAL)"
 fi
