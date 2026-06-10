@@ -46,7 +46,7 @@ Installs Google Chrome, 1Password, Claude, Node.js, Docker (Colima), AWS CLI, Go
 ./scripts/zsh/install-dev-tools.sh
 ```
 
-Installs Claude Code CLI, Python 3.13, UV, GitHub CLI, fzf, and sentrux (code-quality sensor binary).
+Installs Claude Code CLI, Python 3.13, UV, GitHub CLI, and fzf.
 
 ### Step 4: Claude Code Plugins
 
@@ -54,7 +54,7 @@ Installs Claude Code CLI, Python 3.13, UV, GitHub CLI, fzf, and sentrux (code-qu
 ./scripts/zsh/install-claude-plugins.sh
 ```
 
-Wires Claude Code with the sentrux plugin (from `sentrux/sentrux` marketplace) and the context7 MCP server (Upstash library-docs).
+Wires Claude Code with the context7 MCP server (Upstash library-docs).
 
 ### Step 5: GitHub Setup
 
@@ -96,7 +96,7 @@ factory-reset/
     │   └── install-foundation.sh     # Homebrew, git, iTerm2, oh-my-zsh
     ├── zsh/
     │   ├── install-apps.sh           # Applications and cloud CLIs
-    │   ├── install-dev-tools.sh      # Dev tools, language runtimes, sentrux binary
+    │   ├── install-dev-tools.sh      # Dev tools and language runtimes
     │   ├── install-claude-plugins.sh # Claude Code plugins + MCP servers
     │   └── configure-dock.sh         # Dock configuration
     └── dev-launcher.sh               # Launch repos in iTerm2 split panes

@@ -53,7 +53,4 @@ brew install gh
 info "Step 5: Installing fzf (fuzzy finder)..."
 brew install fzf
 
-info "Step 6: Installing sentrux (code-quality sensor for AI agents)..."
-brew install sentrux/tap/sentrux
-
 log "Development tools installation completed!"

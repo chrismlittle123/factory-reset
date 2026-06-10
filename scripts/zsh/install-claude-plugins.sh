@@ -32,19 +32,10 @@ if ! command -v npx &> /dev/null; then
     exit 1
 fi
 
-# --- sentrux ---
-# Plugin lives in the sentrux/sentrux GitHub marketplace.
-# Also requires the sentrux binary (installed by install-dev-tools.sh).
-info "Step 1: Adding sentrux marketplace..."
-claude plugin marketplace add sentrux/sentrux || warn "sentrux marketplace already registered"
-
-info "Step 2: Installing sentrux plugin..."
-claude plugin install --scope user sentrux@sentrux-marketplace || warn "sentrux plugin already installed"
-
 # --- context7 ---
 # Upstash's library-docs MCP server. Distributed as an npm package, not a Claude
 # Code marketplace plugin — so we register it via `claude mcp add`.
-info "Step 3: Registering context7 MCP server..."
+info "Step 1: Registering context7 MCP server..."
 claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp || warn "context7 MCP server already registered"
 
 log "Claude Code plugins installed."
