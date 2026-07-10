@@ -11,10 +11,6 @@ echo "Installing applications..."
 echo "Installing development tools..."
 ./scripts/zsh/install-dev-tools.sh
 
-# Run install-claude-plugins.sh
-echo "Installing Claude Code plugins..."
-./scripts/zsh/install-claude-plugins.sh
-
 # Run system configuration scripts
 echo "Configuring system settings..."
 ./scripts/zsh/configure-dock.sh

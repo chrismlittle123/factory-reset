@@ -38,7 +38,7 @@ Installs Homebrew, git, iTerm2, oh-my-zsh, and applies custom `.zshrc`.
 ./scripts/zsh/install-apps.sh
 ```
 
-Installs Google Chrome, 1Password, Claude, Node.js, Docker (Colima), AWS CLI, Google Cloud CLI, VS Code, Sublime Text, Slack, and zsh plugins.
+Installs Google Chrome, 1Password, Claude, Node.js, Docker (Colima), AWS CLI, Google Cloud CLI, VS Code, Sublime Text, Slack, Obsidian, Telegram, and zsh plugins.
 
 ### Step 3: Development Tools
 
@@ -48,15 +48,7 @@ Installs Google Chrome, 1Password, Claude, Node.js, Docker (Colima), AWS CLI, Go
 
 Installs Claude Code CLI, Python 3.13, UV, GitHub CLI, and fzf.
 
-### Step 4: Claude Code Plugins
-
-```bash
-./scripts/zsh/install-claude-plugins.sh
-```
-
-Wires Claude Code with the context7 MCP server (Upstash library-docs).
-
-### Step 5: GitHub Setup
+### Step 4: GitHub Setup
 
 ```bash
 ./setup-github.sh
@@ -64,7 +56,7 @@ Wires Claude Code with the context7 MCP server (Upstash library-docs).
 
 Configures git user, generates SSH key, authenticates with GitHub CLI, and uploads the SSH key.
 
-### Step 6: macOS System Settings
+### Step 5: macOS System Settings
 
 ```bash
 ./macos-setup.sh
@@ -72,32 +64,31 @@ Configures git user, generates SSH key, authenticates with GitHub CLI, and uploa
 
 Configures scroll direction, startup sound, notifications (Calendar, Chrome), screenshots location, wallpaper, and Chrome 1Password extension. Each setting is verified after being applied. Some steps require sudo.
 
-### Step 7: Dock Configuration
+### Step 6: Dock Configuration
 
 ```bash
 ./scripts/zsh/configure-dock.sh
 ```
 
-Removes all dock apps and adds: Chrome, iTerm, Sublime Text, Slack, VS Code, 1Password, Claude.
+Removes all dock apps and adds: Chrome, iTerm, Sublime Text, Slack, Telegram, VS Code, Obsidian, 1Password, Claude.
 
 ## Project Structure
 
 ```
 factory-reset/
 ├── run_bash.sh                       # Orchestrator: runs step 1
-├── run_zsh.sh                        # Orchestrator: runs steps 2, 3, 4, 7
+├── run_zsh.sh                        # Orchestrator: runs steps 2, 3, 6
 ├── macos-setup.sh                    # macOS system settings with verification
 ├── setup-github.sh                   # Git + SSH + GitHub auth
 ├── files/
 │   ├── .zshrc                        # Custom zsh configuration
-│   └── bookmarks.html                # Chrome bookmarks for manual import
+│   └── bookmarks_*.html              # Chrome bookmarks export for manual import
 └── scripts/
     ├── bash/
     │   └── install-foundation.sh     # Homebrew, git, iTerm2, oh-my-zsh
     ├── zsh/
     │   ├── install-apps.sh           # Applications and cloud CLIs
     │   ├── install-dev-tools.sh      # Dev tools and language runtimes
-    │   ├── install-claude-plugins.sh # Claude Code plugins + MCP servers
     │   └── configure-dock.sh         # Dock configuration
     └── dev-launcher.sh               # Launch repos in iTerm2 split panes
 ```
@@ -106,13 +97,13 @@ factory-reset/
 
 1. Log into 1Password
 2. Log into Gmail and GitHub in Chrome
-3. Import Chrome bookmarks from `files/bookmarks.html`
+3. Import Chrome bookmarks from `files/bookmarks_*.html` (most recent export)
 4. Configure AWS CLI: `aws configure`
 5. Configure GCloud CLI: `gcloud init`
 
 ## Notes
 
-- Scripts are designed to run in sequence: step 1 in default Terminal, steps 2-7 in iTerm2
+- Scripts are designed to run in sequence: step 1 in default Terminal, steps 2-6 in iTerm2
 - All installations use Homebrew for consistency
 - The dock configuration removes all existing apps and adds only the specified ones
 - GitHub setup configures git with: Christopher Little (christopher.little.personal@gmail.com)

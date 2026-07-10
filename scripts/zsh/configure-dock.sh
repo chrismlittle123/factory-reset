@@ -47,7 +47,9 @@ dock_apps=(
     "/Applications/iTerm.app"
     "/Applications/Sublime Text.app"
     "/Applications/Slack.app"
+    "/Applications/Telegram.app"
     "/Applications/Visual Studio Code.app"
+    "/Applications/Obsidian.app"
     "/Applications/1Password.app"
     "/Applications/Claude.app"
 )

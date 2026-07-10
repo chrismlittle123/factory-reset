@@ -71,7 +71,13 @@ brew install --cask sublime-text
 info "Step 10: Installing Slack..."
 brew install --cask slack
 
-info "Step 11: Installing additional zsh plugins..."
+info "Step 11: Installing Obsidian..."
+brew install --cask obsidian
+
+info "Step 12: Installing Telegram..."
+brew install --cask telegram
+
+info "Step 13: Installing additional zsh plugins..."
 # Install useful zsh plugins if they don't exist
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
@@ -85,7 +91,7 @@ if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 fi
 
-info "Step 12: Updating .zshrc with plugins..."
+info "Step 14: Updating .zshrc with plugins..."
 # Add plugins to .zshrc if not already there
 if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
     log "Adding plugins to .zshrc..."
