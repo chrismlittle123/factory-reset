@@ -58,3 +58,10 @@ fi
 
 echo ""
 echo "============================================================================"
+echo ""
+log "Foundation setup complete!"
+echo ""
+warn "Next steps:"
+echo "  1. Quit Terminal and open iTerm2"
+echo "  2. cd back into this repo"
+echo "  3. Run: ./run_zsh.sh"

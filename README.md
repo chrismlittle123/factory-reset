@@ -20,77 +20,69 @@ After the foundation setup completes, switch to iTerm2 and run:
 ./run_zsh.sh
 ```
 
+Then complete the Chrome prerequisites and run GitHub setup (see Step 3 below).
+
 ## Scripts (Run in Order)
 
 ### Step 1: Foundation (run in macOS Terminal)
 
 ```bash
-./scripts/bash/install-foundation.sh
+./run_bash.sh
 ```
 
 Installs Homebrew, git, iTerm2, oh-my-zsh, and applies custom `.zshrc`.
 
 **Switch to iTerm2 for the remaining steps.**
 
-### Step 2: Applications
+### Step 2: Everything else (run in iTerm2)
 
 ```bash
-./scripts/zsh/install-apps.sh
+./run_zsh.sh
 ```
 
-Installs Google Chrome, 1Password, Claude, Node.js, Docker (Colima), AWS CLI, Google Cloud CLI, VS Code, Sublime Text, Slack, Obsidian, Telegram, and zsh plugins.
+Runs, in order:
 
-### Step 3: Development Tools
+- **Applications** (`install-apps.sh`) — Google Chrome, 1Password, Claude, Node.js, Docker (Colima), AWS CLI, Google Cloud CLI, VS Code, Sublime Text, Slack, Obsidian, Telegram, and zsh plugins.
+- **Development tools** (`install-dev-tools.sh`) — Claude Code CLI, Python 3.13, UV, GitHub CLI, fzf, and jq. Also installs the Claude Code statusline (`statusline.sh` → `~/.claude/`) and registers it in `~/.claude/settings.json`.
+- **macOS system settings** (`macos-setup.sh`) — scroll direction, startup sound, notifications (Calendar, Chrome), screenshots location, wallpaper, and Chrome 1Password extension. Each setting is verified; some steps require sudo.
+- **Dock** (`configure-dock.sh`) — removes all dock apps and adds: Chrome, iTerm, Sublime Text, Slack, Telegram, VS Code, Obsidian, 1Password, Claude.
 
-```bash
-./scripts/zsh/install-dev-tools.sh
-```
+### Step 3: GitHub Setup (run separately, after Chrome is ready)
 
-Installs Claude Code CLI, Python 3.13, UV, GitHub CLI, and fzf.
+First complete these manual prerequisites:
 
-### Step 4: GitHub Setup
+1. Set Google Chrome as the default browser
+2. Add the 1Password extension to Chrome and sign in
+3. Log into GitHub in Chrome
+
+Then run:
 
 ```bash
 ./setup-github.sh
 ```
 
-Configures git user, generates SSH key, authenticates with GitHub CLI, and uploads the SSH key.
-
-### Step 5: macOS System Settings
-
-```bash
-./macos-setup.sh
-```
-
-Configures scroll direction, startup sound, notifications (Calendar, Chrome), screenshots location, wallpaper, and Chrome 1Password extension. Each setting is verified after being applied. Some steps require sudo.
-
-### Step 6: Dock Configuration
-
-```bash
-./scripts/zsh/configure-dock.sh
-```
-
-Removes all dock apps and adds: Chrome, iTerm, Sublime Text, Slack, Telegram, VS Code, Obsidian, 1Password, Claude.
+Configures git user, generates an SSH key, authenticates with GitHub CLI, and uploads the SSH key.
 
 ## Project Structure
 
 ```
 factory-reset/
-├── run_bash.sh                       # Orchestrator: runs step 1
-├── run_zsh.sh                        # Orchestrator: runs steps 2, 3, 6
+├── run_bash.sh                       # Orchestrator: foundation (macOS Terminal)
+├── run_zsh.sh                        # Orchestrator: apps, dev tools, macOS settings, dock (iTerm2)
 ├── macos-setup.sh                    # macOS system settings with verification
-├── setup-github.sh                   # Git + SSH + GitHub auth
+├── setup-github.sh                   # Git + SSH + GitHub auth (run separately)
+├── statusline.sh                     # Claude Code terminal statusline
+├── iphone-apps.md                    # Manual checklist for restoring an iPhone
 ├── files/
 │   ├── .zshrc                        # Custom zsh configuration
 │   └── bookmarks_*.html              # Chrome bookmarks export for manual import
 └── scripts/
     ├── bash/
     │   └── install-foundation.sh     # Homebrew, git, iTerm2, oh-my-zsh
-    ├── zsh/
-    │   ├── install-apps.sh           # Applications and cloud CLIs
-    │   ├── install-dev-tools.sh      # Dev tools and language runtimes
-    │   └── configure-dock.sh         # Dock configuration
-    └── dev-launcher.sh               # Launch repos in iTerm2 split panes
+    └── zsh/
+        ├── install-apps.sh           # Applications and cloud CLIs
+        ├── install-dev-tools.sh      # Dev tools and language runtimes
+        └── configure-dock.sh         # Dock configuration
 ```
 
 ## Manual Steps After Installation
@@ -103,7 +95,7 @@ factory-reset/
 
 ## Notes
 
-- Scripts are designed to run in sequence: step 1 in default Terminal, steps 2-6 in iTerm2
+- Scripts are designed to run in sequence: `run_bash.sh` in default Terminal, `run_zsh.sh` in iTerm2, then `setup-github.sh` once Chrome is ready
 - All installations use Homebrew for consistency
 - The dock configuration removes all existing apps and adds only the specified ones
 - GitHub setup configures git with: Christopher Little (christopher.little.personal@gmail.com)

@@ -53,4 +53,33 @@ brew install gh
 info "Step 5: Installing fzf (fuzzy finder)..."
 brew install fzf
 
+info "Step 6: Installing jq (JSON processor)..."
+brew install jq
+
+info "Step 7: Configuring Claude Code statusline..."
+# Resolve repo root from this script's location (zsh: :A absolute, :h dirname)
+REPO_ROOT="${0:A:h}/../.."
+CLAUDE_DIR="$HOME/.claude"
+SETTINGS="$CLAUDE_DIR/settings.json"
+
+mkdir -p "$CLAUDE_DIR"
+cp "$REPO_ROOT/statusline.sh" "$CLAUDE_DIR/statusline.sh"
+chmod +x "$CLAUDE_DIR/statusline.sh"
+
+if [ -f "$SETTINGS" ]; then
+    # Merge the statusLine key into any existing settings without clobbering
+    tmp=$(mktemp)
+    jq '.statusLine = {"type": "command", "command": "~/.claude/statusline.sh"}' "$SETTINGS" > "$tmp" && mv "$tmp" "$SETTINGS"
+else
+    cat > "$SETTINGS" << 'EOF'
+{
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  }
+}
+EOF
+fi
+log "Claude Code statusline configured"
+
 log "Development tools installation completed!"

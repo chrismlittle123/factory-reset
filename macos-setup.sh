@@ -27,7 +27,7 @@ skip() {
     SKIP=$((SKIP + 1))
 }
 
-# 1. Scroll Direction (enable natural scrolling)
+# 1. Scroll Direction (disable natural scrolling — use traditional/mouse-style)
 echo "[1/7] Setting scroll direction..."
 defaults write NSGlobalDomain com.apple.swipeScrollDirection -bool false
 ACTUAL=$(defaults read NSGlobalDomain com.apple.swipeScrollDirection 2>/dev/null)

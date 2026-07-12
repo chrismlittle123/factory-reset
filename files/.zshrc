@@ -7,6 +7,3 @@ ZSH_THEME="robbyrussell"
 # Load Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
-# Dev launcher
-alias dev="$HOME/Documents/GitHub/dev"
-
