@@ -115,14 +115,39 @@ else
     fail "Ventura Graphic wallpaper not found"
 fi
 
-# 7. Chrome 1Password Extension
-echo "[7/7] Configuring Chrome 1Password extension..."
+# 7. Chrome Extensions (force-installed via managed policy)
+echo "[7/7] Configuring Chrome extensions..."
 CHROME_POLICY_DIR="/Library/Managed Preferences"
 CHROME_POLICY_FILE="$CHROME_POLICY_DIR/com.google.Chrome.plist"
-ONEPASSWORD_ID="aeblfdkhhhdcdjpifhhbdiojplfjncoa"
+
+# Extension IDs to force-install. Each is verified against its Chrome Web Store page.
+ONEPASSWORD_ID="aeblfdkhhhdcdjpifhhbdiojplfjncoa"   # 1Password – Password Manager
+ADBLOCK_ID="gighmmpiobklfepjocnamgkkbiglidom"      # AdBlock — block ads across the web
+ADBLOCK_YT_ID="cmedhionkhpnakcndndgjdbohmhepckk"   # Adblock for Youtube™
+UNHOOK_ID="khncfooichmfjbepaaaebmommgaepoid"       # Unhook - Remove YouTube Recommended & Shorts
+
+CHROME_EXTENSION_IDS=(
+    "$ONEPASSWORD_ID"
+    "$ADBLOCK_ID"
+    "$ADBLOCK_YT_ID"
+    "$UNHOOK_ID"
+)
 
 if sudo -n true 2>/dev/null || sudo -v; then
     sudo mkdir -p "$CHROME_POLICY_DIR"
+
+    # Build the per-extension policy entries
+    EXTENSION_ENTRIES=""
+    for ext_id in "${CHROME_EXTENSION_IDS[@]}"; do
+        EXTENSION_ENTRIES+="        <key>${ext_id}</key>
+        <dict>
+            <key>installation_mode</key>
+            <string>normal_installed</string>
+            <key>update_url</key>
+            <string>https://clients2.google.com/service/update2/crx</string>
+        </dict>
+"
+    done
 
     sudo tee "$CHROME_POLICY_FILE" > /dev/null << EOF
 <?xml version="1.0" encoding="UTF-8"?>
@@ -131,24 +156,21 @@ if sudo -n true 2>/dev/null || sudo -v; then
 <dict>
     <key>ExtensionSettings</key>
     <dict>
-        <key>${ONEPASSWORD_ID}</key>
-        <dict>
-            <key>installation_mode</key>
-            <string>normal_installed</string>
-            <key>update_url</key>
-            <string>https://clients2.google.com/service/update2/crx</string>
-        </dict>
-    </dict>
+${EXTENSION_ENTRIES}    </dict>
 </dict>
 </plist>
 EOF
-    if sudo test -f "$CHROME_POLICY_FILE" && sudo grep -q "$ONEPASSWORD_ID" "$CHROME_POLICY_FILE"; then
-        pass "1Password extension configured"
+    MISSING=""
+    for ext_id in "${CHROME_EXTENSION_IDS[@]}"; do
+        sudo grep -q "$ext_id" "$CHROME_POLICY_FILE" || MISSING+=" $ext_id"
+    done
+    if sudo test -f "$CHROME_POLICY_FILE" && [ -z "$MISSING" ]; then
+        pass "Chrome extensions configured (${#CHROME_EXTENSION_IDS[@]}: 1Password, AdBlock, Adblock for YouTube, Unhook)"
     else
-        fail "1Password policy file not written correctly"
+        fail "Chrome policy file missing extensions:${MISSING:-'(file not written)'}"
     fi
 else
-    skip "Requires sudo for 1Password extension"
+    skip "Requires sudo for Chrome extensions"
 fi
 
 echo ""

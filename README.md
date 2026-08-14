@@ -44,7 +44,7 @@ Runs, in order:
 
 - **Applications** (`install-apps.sh`) — Google Chrome, 1Password, Claude, Node.js, Docker (Colima), AWS CLI, Google Cloud CLI, VS Code, Sublime Text, Slack, Obsidian, Telegram, and zsh plugins.
 - **Development tools** (`install-dev-tools.sh`) — Claude Code CLI, Python 3.13, UV, GitHub CLI, fzf, and jq. Also installs the Claude Code statusline (`statusline.sh` → `~/.claude/`) and registers it in `~/.claude/settings.json`.
-- **macOS system settings** (`macos-setup.sh`) — scroll direction, startup sound, notifications (Calendar, Chrome), screenshots location, wallpaper, and Chrome 1Password extension. Each setting is verified; some steps require sudo.
+- **macOS system settings** (`macos-setup.sh`) — scroll direction, startup sound, notifications (Calendar, Chrome), screenshots location, wallpaper, and Chrome extensions (1Password, AdBlock, Adblock for YouTube, Unhook) force-installed via managed policy. Each setting is verified; some steps require sudo.
 - **Dock** (`configure-dock.sh`) — removes all dock apps and adds: Chrome, iTerm, Sublime Text, Slack, Telegram, VS Code, Obsidian, 1Password, Claude.
 
 ### Step 3: GitHub Setup (run separately, after Chrome is ready)
