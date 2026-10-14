@@ -13,6 +13,7 @@ Checklist for restoring an iPhone from scratch. Unlike the Mac side, App Store a
 - [ ] Google Authenticator
 - [ ] Google Drive
 - [ ] Google Maps
+- [ ] iReal Pro
 - [ ] LinkedIn _(hide after install)_
 - [ ] Lloyds
 - [ ] Monzo
@@ -26,4 +27,5 @@ Checklist for restoring an iPhone from scratch. Unlike the Mac side, App Store a
 - [ ] Telegram
 - [ ] Todoist
 - [ ] Trainline
+- [ ] Uber
 - [ ] WhatsApp
