@@ -11,6 +11,7 @@ Checklist for restoring an iPhone from scratch. Unlike the Mac side, App Store a
 - [ ] Fender Guitar Tuner
 - [ ] Gmail
 - [ ] Google Authenticator
+- [ ] Google Calendar
 - [ ] Google Drive
 - [ ] Google Maps
 - [ ] iReal Pro
