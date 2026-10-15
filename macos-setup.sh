@@ -91,64 +91,45 @@ else
     fail "Screenshots location not set correctly (got: $ACTUAL)"
 fi
 
-# 6. Chrome Extensions (force-installed via managed policy)
-echo "[6/6] Configuring Chrome extensions..."
-CHROME_POLICY_DIR="/Library/Managed Preferences"
-CHROME_POLICY_FILE="$CHROME_POLICY_DIR/com.google.Chrome.plist"
+# 6. Chrome Extensions (opened in Chrome for a one-click "Add to Chrome")
+# Chrome doesn't allow installing Web Store extensions from the command line on
+# unmanaged Macs, so open each missing extension's store page instead.
+echo "[6/6] Opening Chrome extensions to install..."
+CHROME_EXTENSIONS_DIR="$HOME/Library/Application Support/Google/Chrome/Default/Extensions"
 
-# Extension IDs to force-install. Each is verified against its Chrome Web Store page.
-ONEPASSWORD_ID="aeblfdkhhhdcdjpifhhbdiojplfjncoa"   # 1Password – Password Manager
-ADBLOCK_ID="gighmmpiobklfepjocnamgkkbiglidom"      # AdBlock — block ads across the web
-ADBLOCK_YT_ID="cmedhionkhpnakcndndgjdbohmhepckk"   # Adblock for Youtube™
-UNHOOK_ID="khncfooichmfjbepaaaebmommgaepoid"       # Unhook - Remove YouTube Recommended & Shorts
-HIDE_AI_OVERVIEWS_ID="neibhohkbmfjninidnaoacabkjonbahn"  # Hide Google AI Overviews
-
-CHROME_EXTENSION_IDS=(
-    "$ONEPASSWORD_ID"
-    "$ADBLOCK_ID"
-    "$ADBLOCK_YT_ID"
-    "$UNHOOK_ID"
-    "$HIDE_AI_OVERVIEWS_ID"
+# "id|name" pairs. Each ID is verified against its Chrome Web Store page.
+CHROME_EXTENSIONS=(
+    "aeblfdkhhhdcdjpifhhbdiojplfjncoa|1Password – Password Manager"
+    "gighmmpiobklfepjocnamgkkbiglidom|AdBlock — block ads across the web"
+    "cmedhionkhpnakcndndgjdbohmhepckk|Adblock for Youtube™"
+    "khncfooichmfjbepaaaebmommgaepoid|Unhook - Remove YouTube Recommended & Shorts"
+    "neibhohkbmfjninidnaoacabkjonbahn|Hide Google AI Overviews"
 )
 
-if sudo -n true 2>/dev/null || sudo -v; then
-    sudo mkdir -p "$CHROME_POLICY_DIR"
+# Remove the policy file left by the old force-install approach (Chrome ignored it)
+OLD_POLICY_FILE="/Library/Managed Preferences/com.google.Chrome.plist"
+if [ -f "$OLD_POLICY_FILE" ] && sudo -n true 2>/dev/null; then
+    sudo rm -f "$OLD_POLICY_FILE"
+fi
 
-    # Build the per-extension policy entries
-    EXTENSION_ENTRIES=""
-    for ext_id in "${CHROME_EXTENSION_IDS[@]}"; do
-        EXTENSION_ENTRIES+="        <key>${ext_id}</key>
-        <dict>
-            <key>installation_mode</key>
-            <string>normal_installed</string>
-            <key>update_url</key>
-            <string>https://clients2.google.com/service/update2/crx</string>
-        </dict>
-"
-    done
-
-    sudo tee "$CHROME_POLICY_FILE" > /dev/null << EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>ExtensionSettings</key>
-    <dict>
-${EXTENSION_ENTRIES}    </dict>
-</dict>
-</plist>
-EOF
-    MISSING=""
-    for ext_id in "${CHROME_EXTENSION_IDS[@]}"; do
-        sudo grep -q "$ext_id" "$CHROME_POLICY_FILE" || MISSING+=" $ext_id"
-    done
-    if sudo test -f "$CHROME_POLICY_FILE" && [ -z "$MISSING" ]; then
-        pass "Chrome extensions configured (${#CHROME_EXTENSION_IDS[@]}: 1Password, AdBlock, Adblock for YouTube, Unhook, Hide Google AI Overviews)"
-    else
-        fail "Chrome policy file missing extensions:${MISSING:-'(file not written)'}"
-    fi
+if [ ! -d "/Applications/Google Chrome.app" ]; then
+    fail "Google Chrome not installed"
 else
-    skip "Requires sudo for Chrome extensions"
+    OPENED=""
+    for entry in "${CHROME_EXTENSIONS[@]}"; do
+        ext_id="${entry%%|*}"
+        ext_name="${entry#*|}"
+        if [ -d "$CHROME_EXTENSIONS_DIR/$ext_id" ]; then
+            pass "$ext_name already installed"
+        else
+            open -a "Google Chrome" "https://chromewebstore.google.com/detail/$ext_id"
+            OPENED+="        - $ext_name"$'\n'
+        fi
+    done
+    if [ -n "$OPENED" ]; then
+        skip "Click \"Add to Chrome\" in each tab that just opened:"
+        printf "%s" "$OPENED"
+    fi
 fi
 
 echo ""
@@ -160,7 +141,7 @@ echo ""
 if [ "$FAIL" -gt 0 ]; then
     echo "⚠ Some settings failed verification. Review output above."
 elif [ "$SKIP" -gt 0 ]; then
-    echo "Note: Some steps were skipped (require sudo). Re-run with sudo access to complete."
+    echo "Note: Some steps need finishing by hand (sudo, or adding Chrome extensions). See ⚠ above."
 else
     echo "All settings applied and verified successfully!"
 fi
