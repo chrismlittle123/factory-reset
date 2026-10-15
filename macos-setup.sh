@@ -28,7 +28,7 @@ skip() {
 }
 
 # 1. Scroll Direction (disable natural scrolling — use traditional/mouse-style)
-echo "[1/7] Setting scroll direction..."
+echo "[1/6] Setting scroll direction..."
 defaults write NSGlobalDomain com.apple.swipeScrollDirection -bool false
 ACTUAL=$(defaults read NSGlobalDomain com.apple.swipeScrollDirection 2>/dev/null)
 if [ "$ACTUAL" = "0" ]; then
@@ -38,7 +38,7 @@ else
 fi
 
 # 2. Disable startup sound (requires sudo)
-echo "[2/7] Disabling startup sound..."
+echo "[2/6] Disabling startup sound..."
 if sudo -n true 2>/dev/null; then
     sudo nvram StartupMute=%01
     ACTUAL=$(sudo nvram StartupMute 2>/dev/null | awk '{print $2}')
@@ -52,7 +52,7 @@ else
 fi
 
 # 3. Allow notifications from Calendar
-echo "[3/7] Allowing Calendar notifications..."
+echo "[3/6] Allowing Calendar notifications..."
 CALENDAR_BUNDLE="com.apple.iCal"
 defaults write "${HOME}/Library/Preferences/com.apple.ncprefs.plist" apps -array-add "<dict><key>bundle-id</key><string>${CALENDAR_BUNDLE}</string><key>flags</key><integer>8</integer></dict>" 2>/dev/null || true
 ACTUAL=$(defaults read "${HOME}/Library/Preferences/com.apple.ncprefs.plist" apps 2>/dev/null | grep -c "$CALENDAR_BUNDLE" || true)
@@ -63,7 +63,7 @@ else
 fi
 
 # 4. Allow notifications from Google Chrome
-echo "[4/7] Allowing Google Chrome notifications..."
+echo "[4/6] Allowing Google Chrome notifications..."
 CHROME_BUNDLE="com.google.Chrome"
 defaults write "${HOME}/Library/Preferences/com.apple.ncprefs.plist" apps -array-add "<dict><key>bundle-id</key><string>${CHROME_BUNDLE}</string><key>flags</key><integer>8</integer></dict>" 2>/dev/null || true
 ACTUAL=$(defaults read "${HOME}/Library/Preferences/com.apple.ncprefs.plist" apps 2>/dev/null | grep -c "$CHROME_BUNDLE" || true)
@@ -77,7 +77,7 @@ fi
 killall NotificationCenter 2>/dev/null || true
 
 # 5. Screenshots location
-echo "[5/7] Setting screenshots location..."
+echo "[5/6] Setting screenshots location..."
 SCREENSHOTS_DIR="$HOME/Documents/Screenshots"
 if [ ! -d "$SCREENSHOTS_DIR" ]; then
     mkdir -p "$SCREENSHOTS_DIR"
@@ -91,32 +91,8 @@ else
     fail "Screenshots location not set correctly (got: $ACTUAL)"
 fi
 
-# 6. Wallpaper
-echo "[6/7] Setting wallpaper..."
-WALLPAPER="$HOME/Library/Application Support/com.apple.mobileAssetDesktop/Ventura Graphic.heic"
-WALLPAPER_FALLBACK="/System/Library/Desktop Pictures/Ventura Graphic.heic"
-WALLPAPER_SET=""
-if [ -f "$WALLPAPER" ]; then
-    osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$WALLPAPER\""
-    WALLPAPER_SET="$WALLPAPER"
-elif [ -f "$WALLPAPER_FALLBACK" ]; then
-    osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$WALLPAPER_FALLBACK\""
-    WALLPAPER_SET="$WALLPAPER_FALLBACK"
-fi
-
-if [ -n "$WALLPAPER_SET" ]; then
-    ACTUAL=$(osascript -e 'tell application "System Events" to get picture of desktop 1' 2>/dev/null)
-    if [ "$ACTUAL" = "$WALLPAPER_SET" ]; then
-        pass "Wallpaper set to Ventura Graphic"
-    else
-        fail "Wallpaper not set correctly (got: $ACTUAL)"
-    fi
-else
-    fail "Ventura Graphic wallpaper not found"
-fi
-
-# 7. Chrome Extensions (force-installed via managed policy)
-echo "[7/7] Configuring Chrome extensions..."
+# 6. Chrome Extensions (force-installed via managed policy)
+echo "[6/6] Configuring Chrome extensions..."
 CHROME_POLICY_DIR="/Library/Managed Preferences"
 CHROME_POLICY_FILE="$CHROME_POLICY_DIR/com.google.Chrome.plist"
 
@@ -125,12 +101,14 @@ ONEPASSWORD_ID="aeblfdkhhhdcdjpifhhbdiojplfjncoa"   # 1Password – Password Man
 ADBLOCK_ID="gighmmpiobklfepjocnamgkkbiglidom"      # AdBlock — block ads across the web
 ADBLOCK_YT_ID="cmedhionkhpnakcndndgjdbohmhepckk"   # Adblock for Youtube™
 UNHOOK_ID="khncfooichmfjbepaaaebmommgaepoid"       # Unhook - Remove YouTube Recommended & Shorts
+HIDE_AI_OVERVIEWS_ID="neibhohkbmfjninidnaoacabkjonbahn"  # Hide Google AI Overviews
 
 CHROME_EXTENSION_IDS=(
     "$ONEPASSWORD_ID"
     "$ADBLOCK_ID"
     "$ADBLOCK_YT_ID"
     "$UNHOOK_ID"
+    "$HIDE_AI_OVERVIEWS_ID"
 )
 
 if sudo -n true 2>/dev/null || sudo -v; then
@@ -165,7 +143,7 @@ EOF
         sudo grep -q "$ext_id" "$CHROME_POLICY_FILE" || MISSING+=" $ext_id"
     done
     if sudo test -f "$CHROME_POLICY_FILE" && [ -z "$MISSING" ]; then
-        pass "Chrome extensions configured (${#CHROME_EXTENSION_IDS[@]}: 1Password, AdBlock, Adblock for YouTube, Unhook)"
+        pass "Chrome extensions configured (${#CHROME_EXTENSION_IDS[@]}: 1Password, AdBlock, Adblock for YouTube, Unhook, Hide Google AI Overviews)"
     else
         fail "Chrome policy file missing extensions:${MISSING:-'(file not written)'}"
     fi
