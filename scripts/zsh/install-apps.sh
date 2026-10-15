@@ -45,39 +45,36 @@ brew install --cask google-chrome
 info "Step 2: Installing 1Password..."
 brew install --cask 1password
 
-info "Step 3: Installing Claude..."
-brew install --cask claude
-
-info "Step 4: Installing Node.js..."
+info "Step 3: Installing Node.js..."
 brew install node
 
-info "Step 5: Installing Docker (via Colima)..."
+info "Step 4: Installing Docker (via Colima)..."
 brew install colima docker docker-compose
 log "Starting Colima VM..."
 colima start
 
-info "Step 6: Installing AWS CLI..."
+info "Step 5: Installing AWS CLI..."
 brew install awscli
 
-info "Step 7: Installing Google Cloud CLI..."
+info "Step 6: Installing Google Cloud CLI..."
 brew install --cask google-cloud-sdk
 
-info "Step 8: Installing VS Code..."
+info "Step 7: Installing VS Code..."
 brew install --cask visual-studio-code
 
-info "Step 9: Installing Sublime Text..."
+info "Step 8: Installing Sublime Text..."
 brew install --cask sublime-text
 
-info "Step 10: Installing Slack..."
+info "Step 9: Installing Slack..."
 brew install --cask slack
 
-info "Step 11: Installing Obsidian..."
+info "Step 10: Installing Obsidian..."
 brew install --cask obsidian
 
-info "Step 12: Installing Telegram..."
+info "Step 11: Installing Telegram..."
 brew install --cask telegram
 
-info "Step 13: Installing additional zsh plugins..."
+info "Step 12: Installing additional zsh plugins..."
 # Install useful zsh plugins if they don't exist
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
@@ -91,7 +88,7 @@ if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 fi
 
-info "Step 14: Updating .zshrc with plugins..."
+info "Step 13: Updating .zshrc with plugins..."
 # Add plugins to .zshrc if not already there
 if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
     log "Adding plugins to .zshrc..."

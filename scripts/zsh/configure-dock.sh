@@ -51,7 +51,6 @@ dock_apps=(
     "/Applications/Visual Studio Code.app"
     "/Applications/Obsidian.app"
     "/Applications/1Password.app"
-    "/Applications/Claude.app"
 )
 
 # Add each app if it exists
