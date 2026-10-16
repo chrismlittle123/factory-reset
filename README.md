@@ -90,7 +90,7 @@ factory-reset/
 1. Log into 1Password
 2. Log into Gmail and GitHub in Chrome
 3. Import Chrome bookmarks from `files/bookmarks_*.html` (most recent export)
-4. Configure AWS CLI: `aws configure`
+4. Configure AWS CLI with SSO (no long-lived keys): `aws configure sso`
 5. Configure GCloud CLI: `gcloud init`
 
 ## Notes
