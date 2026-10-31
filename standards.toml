@@ -1,0 +1,26 @@
+# factory-reset - internal. Shell scripts and dotfiles that set up a fresh
+# Mac. No TypeScript and no Python, so no language ruleset applies and it
+# names none: what's left to gate is that nothing secret gets committed.
+# History doesn't follow conventional commits, so process.commits is off.
+[metadata]
+tier = "internal"
+project = "factory-reset"
+
+[code.security.secrets]
+enabled = true
+scan_mode = "branch"
+base_branch = "main"
+
+# The template's credential files, plus what this repo's own setup creates
+# or could copy in next to files/.zshrc: the ed25519 key setup-github.sh
+# generates, AWS and gcloud credentials, and shell history.
+[process.forbidden_files]
+enabled = true
+scope = "git"
+files = [
+  "**/.env", "**/.env.*", "**/*.pem", "**/*.key", "**/*.p12", "**/id_rsa*",
+  "**/id_ed25519*", "**/.aws/credentials", "**/application_default_credentials.json",
+  "**/.netrc", "**/.zsh_history", "**/.bash_history",
+]
+ignore = ["**/.env.example", "**/*.pub"]
+message = "Credentials and shell history stay on the machine, not in this public repo."
