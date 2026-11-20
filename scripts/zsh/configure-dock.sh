@@ -49,7 +49,6 @@ dock_apps=(
     "/Applications/Slack.app"
     "/Applications/Telegram.app"
     "/Applications/Visual Studio Code.app"
-    "/Applications/Obsidian.app"
     "/Applications/1Password.app"
 )
 
