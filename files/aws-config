@@ -1,0 +1,18 @@
+[sso-session personal]
+sso_start_url = https://d-9c6749fa60.awsapps.com/start
+sso_region = eu-west-2
+sso_registration_scopes = sso:account:access
+
+[profile personal-dev]
+sso_session = personal
+sso_account_id = 215629979895
+sso_role_name = AdministratorAccess
+region = eu-west-2
+output = json
+
+[profile personal-prod]
+sso_session = personal
+sso_account_id = 679191205031
+sso_role_name = AdministratorAccess
+region = eu-west-2
+output = json

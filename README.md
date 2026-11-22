@@ -43,6 +43,7 @@ Installs Homebrew, git, iTerm2, oh-my-zsh, and applies custom `.zshrc`.
 Runs, in order:
 
 - **Applications** (`install-apps.sh`) — Google Chrome, 1Password, Node.js, Docker (Colima), AWS CLI, Google Cloud CLI, VS Code, Sublime Text, Slack, Telegram, and zsh plugins.
+- **AWS CLI config** (`configure-aws.sh`) — copies `files/aws-config` to `~/.aws/config`: an SSO session for the personal AWS access portal and the profiles `personal-dev` and `personal-prod` (AdministratorAccess, eu-west-2). Backs up any different existing config first. No access keys are written.
 - **Development tools** (`install-dev-tools.sh`) — Claude Code CLI, Python 3.13, UV, GitHub CLI, fzf, and jq. Also installs the Claude Code statusline (`statusline.sh` → `~/.claude/`) and registers it in `~/.claude/settings.json`.
 - **macOS system settings** (`macos-setup.sh`) — scroll direction, startup sound, notifications (Calendar, Chrome), screenshots location, and Chrome extensions (1Password, AdBlock, Adblock for YouTube, Unhook, Hide Google AI Overviews). Chrome blocks command-line installs, so the script opens each missing extension's Web Store page for a one-click "Add to Chrome". Each setting is verified; some steps require sudo.
 - **Dock** (`configure-dock.sh`) — removes all dock apps and adds: Chrome, iTerm, Sublime Text, Slack, Telegram, VS Code, 1Password.
@@ -75,12 +76,14 @@ factory-reset/
 ├── iphone-apps.md                    # Manual checklist for restoring an iPhone
 ├── files/
 │   ├── .zshrc                        # Custom zsh configuration
+│   ├── aws-config                    # ~/.aws/config: personal SSO session + profiles
 │   └── bookmarks_*.html              # Chrome bookmarks export for manual import
 └── scripts/
     ├── bash/
     │   └── install-foundation.sh     # Homebrew, git, iTerm2, oh-my-zsh
     └── zsh/
         ├── install-apps.sh           # Applications and cloud CLIs
+        ├── configure-aws.sh          # Installs files/aws-config to ~/.aws/config
         ├── install-dev-tools.sh      # Dev tools and language runtimes
         └── configure-dock.sh         # Dock configuration
 ```
@@ -90,7 +93,7 @@ factory-reset/
 1. Log into 1Password
 2. Log into Gmail and GitHub in Chrome
 3. Import Chrome bookmarks from `files/bookmarks_*.html` (most recent export)
-4. Configure AWS CLI with SSO (no long-lived keys): `aws configure sso`
+4. Sign into AWS: `aws sso login --sso-session personal` (one login covers `personal-dev` and `personal-prod`; Route 53 domains live in prod)
 5. Configure GCloud CLI: `gcloud init`
 
 ## Notes

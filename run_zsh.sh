@@ -7,6 +7,10 @@ chmod +x scripts/zsh/*.sh macos-setup.sh setup-github.sh
 echo "Installing applications..."
 ./scripts/zsh/install-apps.sh
 
+# Install the personal AWS CLI config (SSO profiles, no keys)
+echo "Configuring AWS CLI..."
+./scripts/zsh/configure-aws.sh
+
 # Run install-dev-tools.sh
 echo "Installing development tools..."
 ./scripts/zsh/install-dev-tools.sh
@@ -28,3 +32,5 @@ echo "  2. Add the 1Password extension to Chrome and sign in"
 echo "  3. Log into GitHub in Chrome"
 echo ""
 echo "Then run: ./setup-github.sh"
+echo ""
+echo "AWS: sign in once with: aws sso login --sso-session personal"
