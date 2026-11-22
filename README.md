@@ -101,4 +101,4 @@ factory-reset/
 - Scripts are designed to run in sequence: `run_bash.sh` in default Terminal, `run_zsh.sh` in iTerm2, then `setup-github.sh` once Chrome is ready
 - All installations use Homebrew for consistency
 - The dock configuration removes all existing apps and adds only the specified ones
-- GitHub setup configures git with: Christopher Little (christopher.little.personal@gmail.com)
+- GitHub setup configures git with: Christopher Little (63648951+chrismlittle123@users.noreply.github.com, GitHub's noreply address — pushes with the private Gmail are blocked by email privacy)

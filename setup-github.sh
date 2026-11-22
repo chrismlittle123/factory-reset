@@ -26,7 +26,7 @@ fi
 
 info "Step 1: Setting Git global configuration..."
 git config --global user.name "Christopher Little"
-git config --global user.email "christopher.little.personal@gmail.com"
+git config --global user.email "63648951+chrismlittle123@users.noreply.github.com"
 
 info "Step 2: Generating SSH key..."
 # Generate SSH key if it doesn't exist
