@@ -44,7 +44,7 @@ Runs, in order:
 
 - **Applications** (`install-apps.sh`) — Google Chrome, 1Password, Node.js, Docker (Colima), AWS CLI, Google Cloud CLI, VS Code, Sublime Text, Slack, Telegram, and zsh plugins.
 - **AWS CLI config** (`configure-aws.sh`) — copies `files/aws-config` to `~/.aws/config`: an SSO session for the personal AWS access portal and the profiles `personal-dev` and `personal-prod` (AdministratorAccess, eu-west-2). Backs up any different existing config first. No access keys are written.
-- **Development tools** (`install-dev-tools.sh`) — Claude Code CLI, Python 3.13, UV, GitHub CLI, fzf, and jq. Also installs the Claude Code statusline (`statusline.sh` → `~/.claude/`) and registers it in `~/.claude/settings.json`.
+- **Development tools** (`install-dev-tools.sh`) — Claude Code CLI, Python 3.13, UV, GitHub CLI, fzf, jq, and OpenTofu. Also installs the Claude Code statusline (`statusline.sh` → `~/.claude/`) and registers it in `~/.claude/settings.json`.
 - **macOS system settings** (`macos-setup.sh`) — scroll direction, startup sound, notifications (Calendar, Chrome), screenshots location, and Chrome extensions (1Password, AdBlock, Adblock for YouTube, Unhook, Hide Google AI Overviews). Chrome blocks command-line installs, so the script opens each missing extension's Web Store page for a one-click "Add to Chrome". Each setting is verified; some steps require sudo.
 - **Dock** (`configure-dock.sh`) — removes all dock apps and adds: Chrome, iTerm, Sublime Text, Slack, Telegram, VS Code, 1Password.
 

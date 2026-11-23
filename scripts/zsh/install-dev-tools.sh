@@ -56,7 +56,10 @@ brew install fzf
 info "Step 6: Installing jq (JSON processor)..."
 brew install jq
 
-info "Step 7: Configuring Claude Code statusline..."
+info "Step 7: Installing OpenTofu..."
+brew install opentofu
+
+info "Step 8: Configuring Claude Code statusline..."
 # Resolve repo root from this script's location (zsh: :A absolute, :h dirname)
 REPO_ROOT="${0:A:h}/../.."
 CLAUDE_DIR="$HOME/.claude"
