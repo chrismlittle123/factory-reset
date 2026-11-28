@@ -73,7 +73,7 @@ factory-reset/
 ├── macos-setup.sh                    # macOS system settings with verification
 ├── setup-github.sh                   # Git + SSH + GitHub auth (run separately)
 ├── statusline.sh                     # Claude Code terminal statusline
-├── iphone-apps.md                    # Manual checklist for restoring an iPhone
+├── iphone-apps.md                    # Manual checklist for restoring an iPhone (apps and settings)
 ├── files/
 │   ├── .zshrc                        # Custom zsh configuration
 │   ├── aws-config                    # ~/.aws/config: personal SSO session + profiles
